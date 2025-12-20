@@ -58,7 +58,7 @@ export const Header = () => {
                     className="ml-2 px-2 py-1 text-sm border rounded"
                     style={{ width: "90px" }}
                     >
-                    <option>EN</option>
+                    <option>ENG</option>
                     <option>TA</option>
                     </select>
                 </div>
