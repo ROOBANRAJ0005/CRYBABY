@@ -14,7 +14,8 @@ dotenv.config({ path: path.join(__dirname, 'config', 'config.env') });
 
 app.use(cors({
   origin: ["http://localhost:3000","https://crybaby.vercel.app"],
-  credentials: true
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 
 
