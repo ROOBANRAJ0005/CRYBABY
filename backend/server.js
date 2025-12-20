@@ -1,8 +1,9 @@
 const app = require('./app'); // import your app
-const connectDatabase  = require('./config/database');
+const getDatabase = require('./config/database');
+
 
 // Connect to MongoDB
-connectDatabase();
+getDatabase();
 
 const PORT = process.env.PORT || 5000;
 
