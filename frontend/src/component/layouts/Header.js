@@ -32,7 +32,7 @@ export const Header = () => {
   }
   }
   return (
-    <nav className="navbar row mt-[1000px]">
+    <nav className="navbar row mb-[1000px]">
        <div id="top_bar" className="h-[35px] md:h-[50px] lg:h-[60px] mt-[-100px] flex justify-between items-center px-3 bg-[rgba(15, 11, 8, 1)]"    >
                 {/* Left Section */}
                 <div className="flex items-center">
