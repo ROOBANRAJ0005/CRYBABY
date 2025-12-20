@@ -33,7 +33,7 @@ export const Header = () => {
   }
   return (
     <nav className="navbar row">
-       <div id="top_bar" className="h-[35px] md:h-[50px] lg:h-[60px] flex justify-between items-center px-3 bg-[rgba(15, 11, 8, 1)]"    >
+       <div id="top_bar" className="h-[35px] md:h-[50px] lg:h-[60px] mt-[-100px] flex justify-between items-center px-3 bg-[rgba(15, 11, 8, 1)]"    >
                 {/* Left Section */}
                 <div className="flex items-center">
                     {socialLinks.map(({ to, icon }, index) => (
