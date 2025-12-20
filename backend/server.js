@@ -1,12 +1,12 @@
 
-
+const PORT = process.env.PORT || 5000;
 const app = require('./app');
 const getDatabase  = require('./config/database');
 
 getDatabase();
 
 const server = app.listen(process.env.PORT, () => {
-    console.log(`Server listening to the port: ${process.env.PORT} and ${process.env.NODE_ENV}`)
+    console.log(`Server listening to the port: ${PORT} and ${process.env.NODE_ENV}`)
 });
 
 process.on('unhandledRejection', (err) => {
