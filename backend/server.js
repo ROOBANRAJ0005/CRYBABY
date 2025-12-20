@@ -1,22 +1,26 @@
+const app = require('./app'); // import your app
+const connectDatabase  = require('./config/database');
+
+// Connect to MongoDB
+connectDatabase();
 
 const PORT = process.env.PORT || 5000;
-const app = require('./app');
-const getDatabase  = require('./config/database');
 
-getDatabase();
-
-const server = app.listen(process.env.PORT, () => {
-    console.log(`Server listening to the port: ${PORT} and ${process.env.NODE_ENV}`)
+// Listen on Render-assigned port
+const server = app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT} | NODE_ENV=${process.env.NODE_ENV}`);
 });
 
+// Handle unhandled promise rejections
 process.on('unhandledRejection', (err) => {
     console.log(`Error: ${err.message}`);
-    console.log('server is shutting down due to unhandledRejection');
+    console.log('Server shutting down due to unhandledRejection');
     server.close(() => process.exit(1));
 });
 
+// Handle uncaught exceptions
 process.on('uncaughtException', (err) => {
     console.log(`Error: ${err.message}`);
-    console.log('server is shutting down due to uncaughtException');
+    console.log('Server shutting down due to uncaughtException');
     server.close(() => process.exit(1));
 });
