@@ -8,7 +8,7 @@ export const getProducts =
     try {
       dispatch(productsRequest());
 
-      let link = `/api/v1/products?page=${currentPage}`;
+      let link = `/products?page=${currentPage}`;
 
       if (keyword) link += `&keyword=${keyword}`;
       if (category) link += `&category=${encodeURIComponent(category)}`;

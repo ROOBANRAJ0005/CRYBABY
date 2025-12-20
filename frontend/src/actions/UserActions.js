@@ -30,7 +30,7 @@ import api from "../api";
 export const login = (email,password) => async(dispatch)=>{
     try{
         dispatch(loginRequest());
-        const { data } = await api.post(`/api/v1/login`,{email,password});
+        const { data } = await api.post(`/login`,{email,password});
         dispatch(loginSuccess({
             user: data.user
         }));
@@ -55,7 +55,7 @@ export const register = (userData) => async (dispatch) => {
             }
         }
 
-        const { data }  = await api.post(`/api/v1/register`,userData, config);
+        const { data }  = await api.post(`/register`,userData, config);
         dispatch(registerSuccess(data.user))
     } catch (error) {
         const errorMessage =error?.response?.data?.message ||
@@ -70,7 +70,7 @@ export const register = (userData) => async (dispatch) => {
 export const loadUser = ()=> async(dispatch)=>{
     try{
          dispatch(loadUserRequest());
-         const { data } = await api.get('/api/v1/myprofile');
+         const { data } = await api.get('/myprofile');
          dispatch(loadUserSuccess(data.user))
 
     }
@@ -85,7 +85,7 @@ export const loadUser = ()=> async(dispatch)=>{
 
 export const logoutUser = ()=>async(dispatch)=>{
     try{
-        await api.get(`/api/v1/logout`)
+        await api.get(`/logout`)
         dispatch(logoutUserSuccess());
     }
     catch(error){
@@ -105,7 +105,7 @@ export const updateProfile = (formData) => async(dispatch)=>{
                 "Content-type" : "multipart/form-data",
             }
         };
-        const { data } = await api.put(`/api/v1/update`,formData,config);
+        const { data } = await api.put(`/update`,formData,config);
         dispatch(updateProfileSuccess(data));
     }
     catch(error){
@@ -128,7 +128,7 @@ export const updatePassword = (formData)=> async(dispatch)=>{
                 'Content-type':'application/json'
             }
         }
-        await api.put(`/api/v1/changepassword`,formData,config);
+        await api.put(`/changepassword`,formData,config);
         dispatch(updatePasswordSuccess()); 
     }
     catch(error){
@@ -148,7 +148,7 @@ export const forgotPassword = (formData)=> async(dispatch)=>{
             }
         }
 
-        await api.post(`/api/v1/forgot/password`,formData,config);
+        await api.post(`/forgot/password`,formData,config);
         dispatch(forgotPasswordSuccess());
     }
     catch(error){
@@ -169,7 +169,7 @@ export const resetPassword = (formData,token)=> async(dispatch)=>{
             }
         }
 
-        await api.post(`/api/v1/reset/password/${token}`,formData,config);
+        await api.post(`/reset/password/${token}`,formData,config);
         dispatch(resetPasswordSuccess());
     }
     catch(error){

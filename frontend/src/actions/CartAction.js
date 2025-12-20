@@ -4,7 +4,7 @@ import { addCartItemRequest, addCartItemSuccess } from "../slices/CartSlice"
 export const addCart = (id,quantity)=>async(dispatch)=>{
     try{
         dispatch(addCartItemRequest());
-        const { data } = await api.get(`/api/v1/product/${id}`);
+        const { data } = await api.get(`/product/${id}`);
         dispatch(addCartItemSuccess({
             product: data.product._id,
             name: data.product.name,

@@ -39,7 +39,7 @@ import { deleteUserFail, deleteUserRequest, deleteUserSuccess, updateUserFail, u
 export const getAdminProducts = ()=> async(dispatch) =>{
     try{
         dispatch(adminProductsRequest());
-        const { data } = await api.get('/api/v1/admin/products');
+        const { data } = await api.get('/admin/products');
         dispatch(adminProductsSuccess(data));
     }
     catch(error){
@@ -50,7 +50,7 @@ export const getAdminProducts = ()=> async(dispatch) =>{
 export const adminOrdersAction = () => async(dispatch) => {
     try {
        dispatch(adminOrdersRequest())
-       const {data} = await api.get(`/api/v1/admin/orders`)
+       const {data} = await api.get(`/admin/orders`)
        dispatch(adminOrdersSuccess(data))
     } catch (error) {
         dispatch(adminOrdersFail(error.response?.data?.message || error.message))
@@ -62,7 +62,7 @@ export const adminOrdersAction = () => async(dispatch) => {
 export const getUsers = () => async(dispatch)=>{
     try{
         dispatch(usersRequest());
-        const { data } = await api.get('/api/v1/admin/users');
+        const { data } = await api.get('/admin/users');
         dispatch(usersSuccess(data.users));
     }
     catch(error){
@@ -73,7 +73,7 @@ export const getUsers = () => async(dispatch)=>{
 export const createNewProduct = (productData) =>async(dispatch)=>{
     try{
         dispatch(newProductRequest());
-        const { data } = await api.post(`/api/v1/admin/products/new`,productData);
+        const { data } = await api.post(`/admin/products/new`,productData);
         dispatch(newProductSuccess(data));
     }
     catch(error){
@@ -84,7 +84,7 @@ export const createNewProduct = (productData) =>async(dispatch)=>{
 export const deleteProduct = (id) =>async(dispatch)=>{
     try{
        dispatch(deleteProductRequest());
-       await api.delete(`/api/v1/admin/product/${id}`);
+       await api.delete(`/admin/product/${id}`);
        dispatch(deleteProductSuccess());
     }
     catch(error){
@@ -95,7 +95,7 @@ export const deleteProduct = (id) =>async(dispatch)=>{
 export const updateProduct = (productId,formData) => async(dispatch) =>{
     try{
         dispatch(updateProductRequest());
-        const { data } = await api.put(`/api/v1/admin/product/${productId}`,formData);
+        const { data } = await api.put(`/admin/product/${productId}`,formData);
         dispatch(updateProductSuccess(data));
     }
     catch(error){
@@ -106,7 +106,7 @@ export const updateProduct = (productId,formData) => async(dispatch) =>{
 export const getAdminProduct = (id) => async(dispatch) => {
      try{
             dispatch(getAdminProductRequest());
-            const {data} = await api.get(`/api/v1/admin/product/${id}`);
+            const {data} = await api.get(`/admin/product/${id}`);
             dispatch(getAdminProductSuccess(data.product));
      }
      catch(error){
@@ -118,7 +118,7 @@ export const getAdminProduct = (id) => async(dispatch) => {
 export const deleteAdminOrder = (id) => async(dispatch)=>{
     try{
         dispatch(deleteAdminOrderRequest());
-        await api.delete(`/api/v1/admin/deleteOrder/${id}`);
+        await api.delete(`/admin/deleteOrder/${id}`);
         dispatch(deleteAdminOrderSuccess());
     }
     catch(error){
@@ -129,7 +129,7 @@ export const deleteAdminOrder = (id) => async(dispatch)=>{
 export const UpdateAdminOrder = (id,orderData) => async(dispatch)=>{
     try{
         dispatch(updateAdminOrderRequest());
-        await api.put(`/api/v1/admin/updateOrder/${id}`,orderData);
+        await api.put(`/admin/updateOrder/${id}`,orderData);
         dispatch(updateAdminOrderSuccess());
     }
     catch(error){
@@ -140,7 +140,7 @@ export const UpdateAdminOrder = (id,orderData) => async(dispatch)=>{
 export const getAdminOrder = (id) => async(dispatch) => {
      try{
             dispatch(getAdminSingleOrderRequest());
-            const {data} = await api.get(`/api/v1/admin/order/${id}`);
+            const {data} = await api.get(`/admin/order/${id}`);
             dispatch(getAdminSingleOrderSuccess(data));
      }
      catch(error){
@@ -151,7 +151,7 @@ export const getAdminOrder = (id) => async(dispatch) => {
 export const getUser = (id) => async(dispatch)=>{
     try{
         dispatch(userRequest());
-        const { data } = await api.get(`/api/v1/admin/user/${id}`);
+        const { data } = await api.get(`/admin/user/${id}`);
         dispatch(userSuccess(data));
     }
     catch(error){
@@ -167,7 +167,7 @@ export const updateUser = (id,formData) => async(dispatch)=>{
                 'Content-type': 'application/json'
             }
         }
-        await api.put(`/api/v1/admin/update/user/${id}`,formData,config);
+        await api.put(`/admin/update/user/${id}`,formData,config);
         dispatch(updateUserSuccess());
     }
     catch(error){
@@ -178,7 +178,7 @@ export const updateUser = (id,formData) => async(dispatch)=>{
 export const deleteUser = (id) => async(dispatch)=>{
     try{
         dispatch(deleteUserRequest());
-        await api.delete(`/api/v1/admin/delete/user/${id}`);
+        await api.delete(`/admin/delete/user/${id}`);
         dispatch(deleteUserSuccess());
     }
     catch(error){
@@ -190,7 +190,7 @@ export const getReviews =  id => async (dispatch) => {
 
     try {  
         dispatch(reviewsRequest()) 
-        const { data }  =  await api.get(`/api/v1/admin/reviews`,{params: {id}});
+        const { data }  =  await api.get(`/admin/reviews`,{params: {id}});
         dispatch(reviewsSuccess(data))
         console.log('reviews',data)
     } catch (error) {
@@ -204,7 +204,7 @@ export const deleteReview =  (productId, id) => async (dispatch) => {
 
     try {  
         dispatch(deleteReviewRequest()) 
-        await api.delete(`/api/v1/admin/delete/review`,{params: {productId, id}});
+        await api.delete(`/admin/delete/review`,{params: {productId, id}});
         dispatch(deleteReviewSuccess())
     } catch (error) {
         //handle error

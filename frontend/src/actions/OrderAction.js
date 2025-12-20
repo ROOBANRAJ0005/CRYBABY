@@ -5,7 +5,7 @@ import { orderCompleted } from "../slices/CartSlice";
 export const createOrder = (order) => async(dispatch) =>{
     try{
         dispatch(createOrderRequest());
-        const { data } = await api.post(`/api/v1/order/create`,order);
+        const { data } = await api.post(`/order/create`,order);
         dispatch(createOrderSuccess(data));
         dispatch(orderCompleted())
     }
@@ -17,7 +17,7 @@ export const createOrder = (order) => async(dispatch) =>{
 export const userOrder = () => async(dispatch) =>{
     try{
         dispatch(userOrdersRequest());
-        const { data } = await api.get(`/api/v1/order/myorder`);
+        const { data } = await api.get(`/order/myorder`);
         dispatch(userOrdersSuccess(data.orders));
 
     }
@@ -29,7 +29,7 @@ export const userOrder = () => async(dispatch) =>{
 export const orderDetailAction = (id) => async(dispatch)=>{
     try{
         dispatch(orderDetailRequest());
-        const { data } = await api.get(`/api/v1/order/singleOrder/${id}`);
+        const { data } = await api.get(`/order/singleOrder/${id}`);
         console.log(data);
         dispatch(orderDetailSuccess(data));
     }

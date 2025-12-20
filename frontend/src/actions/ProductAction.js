@@ -5,7 +5,7 @@ import { productFailed, productRequest, productSuccess, createReviewRequest, cre
 export const getProductDetails = id=> async(dispatch) => {
      try{
             dispatch(productRequest());
-            const {data} = await api.get(`/api/v1/product/${id}`);
+            const {data} = await api.get(`/product/${id}`);
             dispatch(productSuccess(data.product));
      }
      catch(error){
@@ -21,7 +21,7 @@ export const createReviews = (formData) => async(dispatch)=>{
                      }
               }
 
-              const { data } = await api.post(`/api/v1/product/create/review`,formData,config);
+              const { data } = await api.post(`/product/create/review`,formData,config);
               dispatch(createReviewSuccess(data));
               
        }
