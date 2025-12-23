@@ -17,12 +17,9 @@ export const Home = () => {
   const [currentPage]   = useState(1);
 
   useEffect(() => {
-    if (error) {
-      toast.error(error);
-    }
    dispatch(getProducts(currentPage,null,null,null,null));
 
-  }, [error,dispatch,currentPage]);
+  }, [dispatch,currentPage]);
 
 
   return (
