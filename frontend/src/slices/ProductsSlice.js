@@ -4,7 +4,7 @@ const productsSlice = createSlice({
     name: "products",
     initialState: {
         products: [],  // Initialize products as empty array
-        loading: false,
+        loading: true,
         error: null
     },
     reducers: {
