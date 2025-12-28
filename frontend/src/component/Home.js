@@ -15,11 +15,27 @@ export const Home = () => {
   const dispatch = useDispatch();
   const { products = [], loading, error,} = useSelector((state) => state.productsState);
   const [currentPage]   = useState(1);
+  const [pageLoading, setPageLoading] = useState(true);
 
-  useEffect(() => {
-   dispatch(getProducts(currentPage,null,null,null,null));
+  // useEffect(() => {
+  //  dispatch(getProducts(currentPage,null,null,null,null));
 
-  }, [dispatch,currentPage]);
+  // }, [dispatch,currentPage]);
+
+    useEffect(() => {
+    const loadData = async () => {
+      setPageLoading(true);
+      await dispatch(getProducts(currentPage, null, null, null, null));
+      setPageLoading(false); 
+    };
+
+    loadData();
+  }, [dispatch, currentPage]);
+
+  if (pageLoading) {
+    return <Loader />; // ✅ THIS WILL SHOW
+  }
+
 
 
   return (
