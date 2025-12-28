@@ -7,7 +7,7 @@ const userSlice = createSlice({
         user:{},
         isUserUpdated: false,
         isUserDeleted: false,
-        loading:false,
+        loading:true,
         error: null
     },
 

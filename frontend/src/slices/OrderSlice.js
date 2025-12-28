@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const orderSlice = createSlice({
     name: 'order',
     initialState:{
-        loading:false,
+        loading:true,
         orderDetails:{},
         userOrder: [],
         error:null
