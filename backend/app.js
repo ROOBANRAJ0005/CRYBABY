@@ -24,6 +24,8 @@ app.use('/uploads', express.static(path.join(__dirname,'uploads')));
 app.use(express.json());
 app.use(cookieParser());
 
+app.get("/health", (req, res) => res.send("OK"));
+
 app.use('/api/v1', products);
 app.use('/api/v1', users);
 app.use('/api/v1', order);
