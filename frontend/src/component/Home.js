@@ -30,20 +30,37 @@ export const Home = () => {
 
   // }, [dispatch,currentPage]);
 
-    useEffect(() => {
-    const loadData = async () => {
-      setPageLoading(true);
+  //   useEffect(() => {
+  //   const loadData = async () => {
+  //     setPageLoading(true);
+  //     await dispatch(getProducts(currentPage, null, null, null, null));
+  //     setPageLoading(false); 
+  //     setShowWaitMsg(false);
+  //   };
+
+  //   loadData();
+  // }, [dispatch, currentPage]);
+
+  // if (pageLoading) {
+  //   return <Loader />; // ✅ THIS WILL SHOW
+  // }
+
+  useEffect(() => {
+  const warmAndFetch = async () => {
+    try {
+      // 🔥 warm up backend
+      await fetch("https://crybaby-q8rs.onrender.com/health");
+
+      // 🔥 now real api call
       await dispatch(getProducts(currentPage, null, null, null, null));
-      setPageLoading(false); 
-      setShowWaitMsg(false);
-    };
+    } catch (err) {
+      console.error("Warmup failed", err);
+    }
+  };
 
-    loadData();
-  }, [dispatch, currentPage]);
+  warmAndFetch();
+}, [dispatch, currentPage]);
 
-  if (pageLoading) {
-    return <Loader />; // ✅ THIS WILL SHOW
-  }
 
 
 
