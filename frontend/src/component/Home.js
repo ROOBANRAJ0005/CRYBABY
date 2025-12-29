@@ -16,6 +16,14 @@ export const Home = () => {
   const { products = [], loading, error,} = useSelector((state) => state.productsState);
   const [currentPage]   = useState(1);
   const [pageLoading, setPageLoading] = useState(true);
+  const [showWaitMsg, setShowWaitMsg] = useState(true);
+  useEffect(() => {
+  const timer = setTimeout(() => {
+    setShowWaitMsg(false);
+  }, 15000); // 15 seconds
+
+  return () => clearTimeout(timer); // ✅ cleanup
+}, []);
 
   // useEffect(() => {
   //  dispatch(getProducts(currentPage,null,null,null,null));
@@ -27,6 +35,7 @@ export const Home = () => {
       setPageLoading(true);
       await dispatch(getProducts(currentPage, null, null, null, null));
       setPageLoading(false); 
+      setShowWaitMsg(false);
     };
 
     loadData();
@@ -41,13 +50,21 @@ export const Home = () => {
   return (
     <Fragment>
       <MetaData title={"Latest Products"} />
-      {loading ? (
-        <Loader />
+      {showWaitMsg ? (
+       
+  <p
+    className="fixed top-4 left-1/2 -translate-x-1/2
+               bg-black text-white px-4 py-2 rounded
+               text-sm shadow-lg"
+    style={{ zIndex: 1 }}
+  >
+    Please wait a sec, server is waking up...
+  </p>
       ) : (
         <div className='relative'>
         <Fragment>
           <div className="carousel-full">
-            <Carousel />
+            <Carousel />  
           </div>
           <Collection/>
           <h1 id="products_heading">Latest Products</h1>
