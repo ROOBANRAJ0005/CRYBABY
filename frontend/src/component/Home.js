@@ -50,21 +50,13 @@ export const Home = () => {
   return (
     <Fragment>
       <MetaData title={"Latest Products"} />
-      {showWaitMsg ? (
-       
-  <p
-    className="fixed top-4 left-1/2 -translate-x-1/2
-               bg-black text-white px-4 py-2 rounded
-               text-sm shadow-lg"
-    style={{ zIndex: 1 }}
-  >
-    Please wait a sec, server is waking up...
-  </p>
+      {loading ? (
+        <Loader />
       ) : (
         <div className='relative'>
         <Fragment>
           <div className="carousel-full">
-            <Carousel />  
+            <Carousel />
           </div>
           <Collection/>
           <h1 id="products_heading">Latest Products</h1>
