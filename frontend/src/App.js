@@ -1,7 +1,6 @@
 
 import './App.css';
 import './index.css';
-import { SpeedInsights } from '@vercel/speed-insights/react';
 import {Routes,Route, useLocation} from 'react-router-dom'
 import { Home } from './component/Home';
 import { Header } from './component/layouts/Header';
@@ -105,7 +104,6 @@ function App() {
               minHeight: "100vh"
             }} */}
             <HelmetProvider>
-                  <SpeedInsights/>
                     
                     <Header/>
                   <div className='container container-fluid'>
