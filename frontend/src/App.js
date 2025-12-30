@@ -106,7 +106,7 @@ function App() {
             }} */}
             <HelmetProvider>
         
-                     <SpeedInsights />
+                    
                     <Header/>
                   <div className='container container-fluid'>
                     <ToastContainer theme='dark' />
